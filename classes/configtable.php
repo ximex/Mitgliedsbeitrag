@@ -371,7 +371,7 @@ class ConfigTablePMB
      */
     public function delete_config_data($deinst_org_select)
     {
-        global $gDb, $gCurrentOrganization,$gL10n;
+        global $gDb, $gCurrentOrganization, $gL10n;
 
         $result_data = false;
         $result_db = false;
@@ -415,7 +415,7 @@ class ConfigTablePMB
      */
     public function delete_member_data($deinst_org_select, $dataField, $dataDesc = '')
     {
-        global $gDb, $gCurrentOrganization,$gL10n;
+        global $gDb, $gCurrentOrganization, $gL10n;
 
         $result = '';
         $usfIDs = array();
@@ -524,7 +524,7 @@ class ConfigTablePMB
      */
     public function delete_mail_data($deinst_org_select)
     {
-        global $gDb, $gCurrentOrganization,$gL10n;
+        global $gDb, $gCurrentOrganization, $gL10n;
 
         $result = '';
         $result_data = false;

@@ -203,7 +203,7 @@ function bezugskategorie_einlesen()
  */
 function hasRole_IDPMB($role_id, $user_id = 0)
 {
-    global $gCurrentUser,$gCurrentOrganization, $gDb;
+    global $gCurrentUser, $gCurrentOrganization, $gDb;
 
     if($user_id == 0)
     {
@@ -367,7 +367,7 @@ function delete_NULL ($wert)
  */
 function getRole_IDPMB($role_name)
 {
-    global $gDb,$gCurrentOrganization;
+    global $gDb, $gCurrentOrganization;
 
     $sql    = 'SELECT rol_id
                  FROM '. TBL_ROLES. ', '. TBL_CATEGORIES. '
@@ -796,7 +796,7 @@ function vergleich($wert_a, $wert_b)
  */
 function check_rols()
 {
-    global $pPreferences,$gL10n;
+    global $pPreferences, $gL10n;
     $ret = array();
     $alt = beitragsrollen_einlesen('alt', array('LAST_NAME'));
 
@@ -1117,7 +1117,7 @@ function ageCalculator($geburtstag, $stichtag)
  */
 function erzeuge_mitgliedsnummer()
 {
-    global $gDb,$gMessage,$gL10n;
+    global $gDb, $gMessage, $gL10n;
 
     $rueckgabe_mitgliedsnummer = 0;
     $mitgliedsnummern = array();
@@ -1374,7 +1374,7 @@ Schraegstrich           |  /        | X'2F
  */
 function replace_emailparameter($text, $user)
 {
-    global $gCurrentOrganization,$pPreferences;
+    global $gCurrentOrganization, $pPreferences;
 
     // now replace all parameters in email text
     $text = preg_replace('/#user_first_name#/', $user->getValue('FIRST_NAME'),  $text);

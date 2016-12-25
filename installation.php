@@ -921,7 +921,7 @@ elseif($getMode == 'soll_ist')
  */
 function check_DB()
 {
-    global $gDb,$gCurrentOrganization,$gL10n;
+    global $gDb, $gCurrentOrganization;
 
     // Mit der Version 3.3.0 wurde die Installationsroutine umprogrammiert.
     // Frueher wurde auf usf_name geprueft, jetzt auf usf_name_intern.
@@ -1294,7 +1294,7 @@ function SollIstKategorie($arr, $field)
  */
 function getNextCatSequence($cat_type)
 {
-    global $gDb,$gCurrentOrganization;
+    global $gDb, $gCurrentOrganization;
 
     $sql    = 'SELECT cat_type, cat_sequence
                 FROM '. TBL_CATEGORIES. '
@@ -1343,7 +1343,7 @@ function getNextFieldSequence($usf_cat_id)
  */
 function getCat_IDPMB($cat_name_intern)
 {
-    global $gDb,$gCurrentOrganization;
+    global $gDb, $gCurrentOrganization;
 
     $sql = ' SELECT cat_id
             FROM '.TBL_CATEGORIES.'
