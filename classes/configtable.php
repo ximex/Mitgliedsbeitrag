@@ -356,7 +356,7 @@ class ConfigTablePMB
             OR cat_org_id IS NULL ) ';
         $statement = $gDb->query($sql);
 
-        if($statement->rowCount() != count($fieldsarray))
+        if($statement->rowCount() !== count($fieldsarray))
         {
             $ret = 2;
         }
@@ -394,7 +394,7 @@ class ConfigTablePMB
         $sql = 'SELECT * FROM '.$this->table_name.' ';
         $statement = $gDb->query($sql);
 
-        if($statement->rowCount() == 0)
+        if($statement->rowCount() === 0)
         {
             $sql = 'DROP TABLE '.$this->table_name.' ';
             $result_db = $gDb->query($sql);
@@ -459,7 +459,7 @@ class ConfigTablePMB
             WHERE usd_usf_id = '.$data['usf_id'];
             $statement = $gDb->query($sql);
 
-            if($statement->rowCount() != 0)
+            if($statement->rowCount() > 0)
             {
                 $sql = 'DELETE FROM '.TBL_USER_DATA.'
                         WHERE usd_usf_id = '.$data['usf_id'];
@@ -472,7 +472,7 @@ class ConfigTablePMB
             WHERE usl_usf_id = '.$data['usf_id'];
             $statement = $gDb->query($sql);
 
-            if($statement->rowCount() != 0)
+            if($statement->rowCount() > 0)
             {
                 $sql = 'DELETE FROM '.TBL_USER_LOG.'
                     WHERE usl_usf_id = '.$data['usf_id'];
@@ -485,7 +485,7 @@ class ConfigTablePMB
                 WHERE lsc_usf_id = '.$data['usf_id'];
             $statement = $gDb->query($sql);
 
-            if($statement->rowCount() != 0)
+            if($statement->rowCount() > 0)
             {
                 $sql = 'DELETE FROM '.TBL_LIST_COLUMNS.'
                     WHERE lsc_usf_id = '.$data['usf_id'];
@@ -503,7 +503,7 @@ class ConfigTablePMB
             $sql = 'SELECT * FROM '.TBL_USER_FIELDS.'
                     WHERE usf_cat_id = '.$data['usf_cat_id'];
             $statement = $gDb->query($sql);
-            if($statement->rowCount() == 0)
+            if($statement->rowCount() === 0)
             {
                     $sql = 'DELETE FROM '.TBL_CATEGORIES.'
                         WHERE cat_id = '.$data['usf_cat_id'];
