@@ -1051,7 +1051,7 @@ function test_iban($iban)
         . substr($iban, 2, 2);
 
     $rest = 0;
-    for ($pos = 0; $pos<strlen($iban1); $pos += 7) {
+    for ($pos = 0; $pos < strlen($iban1); $pos += 7) {
         $part = strval($rest) . substr($iban1, $pos, 7);
         $rest = intval($part) % 97;
     }

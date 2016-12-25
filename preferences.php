@@ -236,7 +236,7 @@ $page->addHtml('
                         $form->addStaticControl('descd', $gL10n->get('PLG_MITGLIEDSBEITRAG_DELIMITER'), '', array('helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_DELIMITER_DESC'));
                         $html = $gL10n->get('PLG_MITGLIEDSBEITRAG_DELIMITER_INFO1').'<strong><br/>'.$gL10n->get('PLG_MITGLIEDSBEITRAG_DELIMITER_INFO2').' </strong>'.$gL10n->get('PLG_MITGLIEDSBEITRAG_DELIMITER_INFO3');
                         $form->addCustomContent('', $html);
-                        $form->addDescription('<div style="width:100%; height:'.($num_agestaggeredroles<2 ? 170 : 210).'px; overflow:auto; border:20px;">');
+                        $form->addDescription('<div style="width:100%; height:'.($num_agestaggeredroles < 2 ? 170 : 210).'px; overflow:auto; border:20px;">');
                         for ($conf = 0; $conf < $num_agestaggeredroles; $conf++)
                         {
                             $form->openGroupBox('agestaggeredroles_group', ($conf+1).'. '.$gL10n->get('PLG_MITGLIEDSBEITRAG_STAGGERING'));
@@ -272,7 +272,7 @@ $page->addHtml('
                     <div class="panel-body">');
                         // show form
                         $form = new HtmlForm('configurations_form', ADMIDIO_URL . FOLDER_PLUGINS . $plugin_folder .'/preferences_function.php?form=familyroles', $page, array('class' => 'form-preferences'));
-                        $form->addDescription('<div style="width:100%; height:'.($num_familyroles<2 ? 500 : 650).'px; overflow:auto; border:20px;">');
+                        $form->addDescription('<div style="width:100%; height:'.($num_familyroles < 2 ? 500 : 650).'px; overflow:auto; border:20px;">');
                         for ($conf = 0; $conf < $num_familyroles; $conf++)
                         {
                             $form->openGroupBox('familyroles_group', ($conf+1).'. '.$gL10n->get('PLG_MITGLIEDSBEITRAG_FAMILY_ROLE'));
@@ -458,7 +458,7 @@ $page->addHtml('
                         $form = new HtmlForm('configurations_form', ADMIDIO_URL . FOLDER_PLUGINS . $plugin_folder .'/preferences_function.php?form=testssetup', $page, array('class' => 'form-preferences'));
                         $form->addDescription($gL10n->get('PLG_MITGLIEDSBEITRAG_ROLE_TEST_SETUP_INFO'));
                         $form->addDescription('<strong>'.$gL10n->get('PLG_MITGLIEDSBEITRAG_FAMILY_ROLES').'</strong>');
-                        $form->addDescription('<div style="width:100%; height:'.($num_familyroles<2 ? 140 : 160).'px; overflow:auto; border:20px;">');
+                        $form->addDescription('<div style="width:100%; height:'.($num_familyroles < 2 ? 140 : 160).'px; overflow:auto; border:20px;">');
                         for ($conf = 0; $conf < $num_familyroles; $conf++)
                         {
                             $form->openGroupBox('familyroles_group', ($conf+1).'. '.$gL10n->get('PLG_MITGLIEDSBEITRAG_FAMILY_ROLE'));
