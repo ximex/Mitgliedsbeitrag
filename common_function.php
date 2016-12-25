@@ -357,7 +357,7 @@ function delete_NULL ($wert)
 {
     global $delete_NULL_field;
 
-    return $wert[$delete_NULL_field] != NULL;
+    return $wert[$delete_NULL_field] != null;
 }
 
 /**
@@ -1169,76 +1169,76 @@ function erzeuge_mitgliedsnummer()
 /**
  * Callbackfunktion fuer array_filter
  * @param   string  $wert
- * @return  bool    true, wenn Beitrag  != NULL ist
+ * @return  bool    true, wenn Beitrag  != null ist
  */
 function delete_without_BEITRAG ($wert)
 {
     global $gCurrentOrganization;
-    return $wert['FEE'.$gCurrentOrganization->getValue('org_id')] != NULL;
+    return $wert['FEE'.$gCurrentOrganization->getValue('org_id')] != null;
 }
 
 /**
  * Callbackfunktion fuer array_filter
  * @param   string  $wert
- * @return  bool    true, wenn IBAN  != NULL ist
+ * @return  bool    true, wenn IBAN  != null ist
  */
 function delete_without_IBAN ($wert)
 {
-    return $wert['IBAN'] != NULL;
+    return $wert['IBAN'] != null;
 }
 
 /**
  * Callbackfunktion fuer array_filter
  * @param   string  $wert
- * @return  bool    true, wenn BIC  != NULL ist
+ * @return  bool    true, wenn BIC  != null ist
  */
 function delete_without_BIC ($wert)
 {
-    return $wert['BIC'] != NULL;
+    return $wert['BIC'] != null;
 }
 
 /**
  * Callbackfunktion fuer array_filter
  * @param   string  $wert
- * @return  bool    true, wenn MandateID  == NULL ist
+ * @return  bool    true, wenn MandateID  == null ist
  */
 function delete_with_MANDATEID ($wert)
 {
     global $gCurrentOrganization;
-    return !($wert['MANDATEID'.$gCurrentOrganization->getValue('org_id')] != NULL);
+    return !($wert['MANDATEID'.$gCurrentOrganization->getValue('org_id')] != null);
 }
 
 /**
  * Callbackfunktion fuer array_filter
  * @param   string  $wert
- * @return  bool    true, wenn Bezahlt  == NULL ist
+ * @return  bool    true, wenn Bezahlt  == null ist
  */
 function delete_with_BEZAHLT ($wert)
 {
     global $gCurrentOrganization;
-    return !($wert['PAID'.$gCurrentOrganization->getValue('org_id')] != NULL);
+    return !($wert['PAID'.$gCurrentOrganization->getValue('org_id')] != null);
 }
 
 /**
  * Callbackfunktion fuer array_filter
  * @param   string  $wert
- * @return  bool    true, wenn MandateID  != NULL ist
+ * @return  bool    true, wenn MandateID  != null ist
  */
 function delete_without_MANDATEID ($wert)
 {
     global $gCurrentOrganization;
-    return $wert['MANDATEID'.$gCurrentOrganization->getValue('org_id')] != NULL;
+    return $wert['MANDATEID'.$gCurrentOrganization->getValue('org_id')] != null;
 }
 
 /**
  * Callbackfunktion fuer array_filter
  * @param   string  $wert
- * @return  bool    true, wenn MandateID  != NULL ist
+ * @return  bool    true, wenn MandateID  != null ist
  */
 function delete_without_MANDATEDATE ($wert)
 {
     global $gCurrentOrganization;
-    return $wert['MANDATEDATE'.$gCurrentOrganization->getValue('org_id')] != NULL;
+    return $wert['MANDATEDATE'.$gCurrentOrganization->getValue('org_id')] != null;
 }
 
 /**
