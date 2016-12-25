@@ -785,9 +785,18 @@ function vergleich($wert_a, $wert_b)
     $a = $wert_a['year'];
     $b = $wert_b['year'];
 
-    if ($a == $b) return 0;
-    elseif ($a > $b) return 1;
-    else return -1;
+    if ($a == $b)
+    {
+        return 0;
+    }
+    elseif ($a > $b)
+    {
+        return 1;
+    }
+    else
+    {
+        return -1;
+    }
 }
 
 /**
@@ -1049,9 +1058,13 @@ function test_iban($iban)
     $pz = sprintf('%02d', 98-$rest);
 
     if (substr($iban, 2, 2) == '00')
+    {
         return substr_replace($iban, $pz, 2, 2);
+    }
     else
+    {
         return ($rest == 1) ? true : false;
+    }
 }
 
 /**
@@ -1104,11 +1117,17 @@ function ageCalculator($geburtstag, $stichtag)
     $calc_year = $cur_year - $year;
 
     if($month > $cur_month)
+    {
         return $calc_year - 1;
+    }
     elseif ($month == $cur_month && $day > $cur_day)
+    {
         return $calc_year - 1;
-     else
+    }
+    else
+    {
         return $calc_year;
+    }
 }
 
 /**
