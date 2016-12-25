@@ -357,7 +357,7 @@ function delete_NULL ($wert)
 {
     global $delete_NULL_field;
 
-    return  $wert[$delete_NULL_field] != NULL;
+    return $wert[$delete_NULL_field] != NULL;
 }
 
 /**
@@ -1174,7 +1174,7 @@ function erzeuge_mitgliedsnummer()
 function delete_without_BEITRAG ($wert)
 {
     global $gCurrentOrganization;
-    return  $wert['FEE'.$gCurrentOrganization->getValue('org_id')] != NULL;
+    return $wert['FEE'.$gCurrentOrganization->getValue('org_id')] != NULL;
 }
 
 /**
@@ -1184,7 +1184,7 @@ function delete_without_BEITRAG ($wert)
  */
 function delete_without_IBAN ($wert)
 {
-    return  $wert['IBAN'] != NULL;
+    return $wert['IBAN'] != NULL;
 }
 
 /**
@@ -1194,7 +1194,7 @@ function delete_without_IBAN ($wert)
  */
 function delete_without_BIC ($wert)
 {
-    return  $wert['BIC'] != NULL;
+    return $wert['BIC'] != NULL;
 }
 
 /**
@@ -1227,7 +1227,7 @@ function delete_with_BEZAHLT ($wert)
 function delete_without_MANDATEID ($wert)
 {
     global $gCurrentOrganization;
-    return  $wert['MANDATEID'.$gCurrentOrganization->getValue('org_id')] != NULL;
+    return $wert['MANDATEID'.$gCurrentOrganization->getValue('org_id')] != NULL;
 }
 
 /**
@@ -1238,7 +1238,7 @@ function delete_without_MANDATEID ($wert)
 function delete_without_MANDATEDATE ($wert)
 {
     global $gCurrentOrganization;
-    return  $wert['MANDATEDATE'.$gCurrentOrganization->getValue('org_id')] != NULL;
+    return $wert['MANDATEDATE'.$gCurrentOrganization->getValue('org_id')] != NULL;
 }
 
 /**
