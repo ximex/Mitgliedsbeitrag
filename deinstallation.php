@@ -4,7 +4,7 @@
  * Deinstallationsroutine fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Parameters:
@@ -36,7 +36,7 @@ $headline = $gL10n->get('PLG_MITGLIEDSBEITRAG_DEINSTALLATION');
 // create html page object
 $page = new HtmlPage($headline);
 
-if($getMode == 'start')     //Default
+if($getMode == 'start')     // Default
 {
     // get module menu
     $headerMenu = $page->getMenu();
@@ -223,7 +223,7 @@ elseif($getMode == 'delete')
         $html = '<div class="alert alert-warning alert-small" role="alert"><span class="glyphicon glyphicon-warning-sign"></span>'.$gL10n->get('PLG_MITGLIEDSBEITRAG_DEINST_ENDMESSAGE').'</div>';
         $form->addDescription($html);
 
-        //seltsamerweise wird in diesem Abschnitt nichts angezeigt wenn diese Anweisung fehlt
+        // seltsamerweise wird in diesem Abschnitt nichts angezeigt wenn diese Anweisung fehlt
         $form->addStaticControl('', '', '');
 
         $_SESSION['pmbDeinst'] = true;

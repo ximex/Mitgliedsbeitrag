@@ -4,7 +4,7 @@
  * Routine um eine Mandatsaenderung (Zahlungspflichtiger) zu bearbeiten
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Hinweis:   mandate_change.php ist eine modifizierte members_assignment.php
@@ -67,12 +67,12 @@ if($getMode == 'assign')
     $gMessage->showTextOnly(true);
 
     // wurde die Bank geaendert?
-    if ($getBankChanged == 'false')             //nein, dieselbe Bank
+    if ($getBankChanged == 'false')             // nein, dieselbe Bank
     {
-        //hat eine Aenderung der IBAN stattgefunden?
+        // hat eine Aenderung der IBAN stattgefunden?
         if ($getIBAN != $user->getValue('IBAN'))
         {
-            //ja, dann muss origIBAN befuellt sein
+            // ja, dann muss origIBAN befuellt sein
             if (strlen($getOrigIBAN) !== 0)
             {
                 $iban_change = 'true';
@@ -84,9 +84,9 @@ if($getMode == 'assign')
             }
         }
     }
-    else               //die Bank wurde geaendert
+    else               // die Bank wurde geaendert
     {
-        //bei einer Aenderung der Bank muss es eine andere IBAN geben
+        // bei einer Aenderung der Bank muss es eine andere IBAN geben
         if ($getIBAN != $user->getValue('IBAN'))
         {
             $bank_change = 'true';
@@ -101,7 +101,7 @@ if($getMode == 'assign')
     // wurde die Mandatsreferenz geaendert?
     if($getMandateID != $user->getValue('MANDATEID'.$gCurrentOrganization->getValue('org_id')))
     {
-        //bei einer Aenderung muss origMandateID befuellt sein
+        // bei einer Aenderung muss origMandateID befuellt sein
         if (strlen($getOrigMandateID) !== 0)
         {
             $mandateid_change = 'true';

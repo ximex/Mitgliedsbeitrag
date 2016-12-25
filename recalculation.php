@@ -4,7 +4,7 @@
  * Neuberechnung der Mitgliedsbeitraege fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Parameters:       keine
@@ -30,10 +30,10 @@ if(!check_showpluginPMB($pPreferences->config['Pluginfreigabe']['freigabe']))
 $text_token = ($pPreferences->config['Beitrag']['beitrag_text_token'] == '#') ? ' ' : $pPreferences->config['Beitrag']['beitrag_text_token'];
 $message = '';
 
-//alle Beitragsrollen einlesen
+// alle Beitragsrollen einlesen
 $rols = beitragsrollen_einlesen('', array('FIRST_NAME', 'LAST_NAME', 'IBAN', 'DEBTOR'));
 
-//falls eine Rollenabfrage durchgefuehrt wurde, die Rollen, die nicht gewaehlt wurden, loeschen
+// falls eine Rollenabfrage durchgefuehrt wurde, die Rollen, die nicht gewaehlt wurden, loeschen
 if ($pPreferences->config['Beitrag']['beitrag_rollenwahl'][0] != ' ')
 {
     $message .= '<strong>'.$gL10n->get('PLG_MITGLIEDSBEITRAG_CONTRIBUTION_ROLLQUERY_INFO').'</strong><br/><br/>';
@@ -85,7 +85,7 @@ foreach ($rols as $rol => $roldata)
 // alle aktiven Mitglieder einlesen
 $members = list_members(array('FIRST_NAME', 'LAST_NAME', 'FEE'.$gCurrentOrganization->getValue('org_id'), 'CONTRIBUTORY_TEXT'.$gCurrentOrganization->getValue('org_id'), 'PAID'.$gCurrentOrganization->getValue('org_id'), 'ACCESSION'.$gCurrentOrganization->getValue('org_id'), 'DEBTOR'), 0);
 
-//alle Mitglieder durchlaufen und aufgrund von Rollenzugehoerigkeiten die Beitraege bestimmen
+// alle Mitglieder durchlaufen und aufgrund von Rollenzugehoerigkeiten die Beitraege bestimmen
 foreach ($members as $member => $memberdata)
 {
     $members[$member]['BEITRAG-NEU'] = '';
@@ -159,12 +159,12 @@ foreach ($members as $member => $memberdata)
                 }
                 // nur einmal soll beitrag_suffix angezeigt werden, wenn aber rol_description leer ist,
                 // wird es mehrfach hintereinander mit vielen Leerzeichen dazwischen angefuegt, deshalb ersetzen
-                //zuerst zwei aufeinanderfolgende Leerzeichen durch ein Leerzeichen ersetzen
+                // zuerst zwei aufeinanderfolgende Leerzeichen durch ein Leerzeichen ersetzen
                 $members[$member]['BEITRAGSTEXT-NEU'] = str_replace('  ', ' ', $members[$member]['BEITRAGSTEXT-NEU']);
-                //jetzt mehrfache beitrag_suffix loeschen
+                // jetzt mehrfache beitrag_suffix loeschen
                 $members[$member]['BEITRAGSTEXT-NEU'] = str_replace($pPreferences->config['Beitrag']['beitrag_suffix'].' '.$pPreferences->config['Beitrag']['beitrag_suffix'], $pPreferences->config['Beitrag']['beitrag_suffix'], $members[$member]['BEITRAGSTEXT-NEU']);
             }
-            else                             //keine anteilige Berechnung
+            else                             // keine anteilige Berechnung
             {
                 $members[$member]['BEITRAG-NEU'] += $roldata['rol_cost'];
                 if ($roldata['rol_description'] != '')
@@ -204,7 +204,7 @@ foreach ($rols as $rol => $roldata)
             $members[$roldata['has_to_pay']]['BEITRAGSTEXT-NEU'] .= $text_token.' ';
         }
 
-        //alle Mitglieder dieser Rolle durchlaufen und die Beitraege der Mitglieder dem Zahlungspflichtigen zuordnen
+        // alle Mitglieder dieser Rolle durchlaufen und die Beitraege der Mitglieder dem Zahlungspflichtigen zuordnen
         foreach ($roldata['members'] as $member => $memberdata)
         {
             // nicht beim Zahlungspflichtigen selber und auch nur, wenn ein Zusatzbeitrag beim Mitglied errechnet wurde
@@ -254,7 +254,7 @@ foreach ($members as $member => $memberdata)
         // alle Beitraege auf 2 Nachkommastellen runden
         $members[$member]['BEITRAG-NEU'] = round($members[$member]['BEITRAG-NEU'], 2);
 
-        //ggf. abrunden
+        // ggf. abrunden
         if ($pPreferences->config['Beitrag']['beitrag_abrunden'] == true)
         {
             $members[$member]['BEITRAG-NEU'] = floor($members[$member]['BEITRAG-NEU']);
@@ -266,12 +266,12 @@ foreach ($members as $member => $memberdata)
             $members[$member]['BEITRAGSTEXT-NEU'] .= ' '.$members[$member]['CONTRIBUTORY_TEXT'.$gCurrentOrganization->getValue('org_id')].' ';
         }
 
-        //fuehrende und nachfolgene Leerstellen im Beitragstext loeschen
+        // fuehrende und nachfolgene Leerstellen im Beitragstext loeschen
         $members[$member]['BEITRAGSTEXT-NEU'] = trim($members[$member]['BEITRAGSTEXT-NEU']);
-        //zwei aufeinanderfolgende Leerzeichen durch ein Leerzeichen ersetzen
+        // zwei aufeinanderfolgende Leerzeichen durch ein Leerzeichen ersetzen
         $members[$member]['BEITRAGSTEXT-NEU'] = str_replace('  ', ' ', $members[$member]['BEITRAGSTEXT-NEU']);
 
-        //neuen Beitrag schreiben
+        // neuen Beitrag schreiben
         $user = new User($gDb, $gProfileFields, $member);
         $user->setValue('FEE'.$gCurrentOrganization->getValue('org_id'), $members[$member]['BEITRAG-NEU']);
         $user->setValue('CONTRIBUTORY_TEXT'.$gCurrentOrganization->getValue('org_id'), $members[$member]['BEITRAGSTEXT-NEU']);

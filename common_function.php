@@ -4,7 +4,7 @@
  * Gemeinsame Funktionen fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  ***********************************************************************************************
@@ -454,7 +454,7 @@ function analyse_mem()
         }
     }
 
-    //jetzt wird gezaehlt
+    // jetzt wird gezaehlt
     foreach($members as $member => $memberdata)
     {
         if (!empty($memberdata['IBAN']))
@@ -502,9 +502,9 @@ function analyse_rol()
 
     foreach($pPreferences->config['Familienrollen']['familienrollen_prefix'] as $famkey => $famdata)
     {
-        //wieviele Familienrollen mit diesem Praefix gibt es denn?
-        //in der aufrufenden Funktion wird mittels sizeof abgefragt,
-        //deshalb muss hier eine Array erzeugt werden
+        // wieviele Familienrollen mit diesem Praefix gibt es denn?
+        // in der aufrufenden Funktion wird mittels sizeof abgefragt,
+        // deshalb muss hier eine Array erzeugt werden
         $arr = array();
         foreach($fam as $key => $data)
         {
@@ -582,7 +582,7 @@ function check_rollenmitgliedschaft_pflicht()
     // alle Beitragsrollen durchlaufen und diejenigen Rollen loeschen, die nicht als Pflichtrolle definiert sind
     foreach ($beitragsrollen as $rol => $roldata)
     {
-        //alle if und elseif koennte man in einer Zeile schreiben und mit || verknuepfen, aber so ist es uebersichtlicher
+        // alle if und elseif koennte man in einer Zeile schreiben und mit || verknuepfen, aber so ist es uebersichtlicher
         if(($roldata['rollentyp'] == 'fam') && (!$pPreferences->config['Rollenpruefung']['familienrollenpflicht']))
         {
             unset($beitragsrollen[$rol]);
@@ -704,7 +704,7 @@ function check_rollenmitgliedschaft_ausschluss()
     // alle Mitglieder durchlaufen und pruefen, ob sie in Ausschluss-Beitragsrollen sind
     foreach ($members as $member => $memberdata)
     {
-        //falls das Mitglied kein Angehoeriger einer Beitragsrolle ist: abbrechen und zum naechsten Datensatz gehen
+        // falls das Mitglied kein Angehoeriger einer Beitragsrolle ist: abbrechen und zum naechsten Datensatz gehen
         if (!isset($memberdata['rollen']))
         {
             continue;
@@ -781,7 +781,7 @@ function check_rollenmitgliedschaft_ausschluss()
  */
 function vergleich($wert_a, $wert_b)
 {
-    //Sortierung nach dem zweiten Wert des Arrays (Index: 1)
+    // Sortierung nach dem zweiten Wert des Arrays (Index: 1)
     $a = $wert_a['year'];
     $b = $wert_b['year'];
 
@@ -1141,7 +1141,7 @@ function erzeuge_mitgliedsnummer()
 
     sort($mitgliedsnummern);
 
-    //Ueberpruefung auf doppelte Mitgliedsnummern
+    // Ueberpruefung auf doppelte Mitgliedsnummern
     for ($i = 0; $i < count($mitgliedsnummern)-1; $i++)
     {
         if ($mitgliedsnummern[$i] == $mitgliedsnummern[$i+1])
@@ -1409,7 +1409,7 @@ function expand_rollentyp($rollentyp = '')
     {
         $ret = $gL10n->get('PLG_MITGLIEDSBEITRAG_FAMILY_ROLES');
     }
-    else             //==alt
+    else             // ==alt
     {
         $ret = $gL10n->get('PLG_MITGLIEDSBEITRAG_AGE_STAGGERED_ROLES');
     }

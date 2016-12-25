@@ -4,7 +4,7 @@
  * Verarbeiten der Einstellungen des Admidio-Plugins Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Parameters:
@@ -66,8 +66,8 @@ try
                 $pPreferences->config['Altersrollen']['altersrollen_token'][] = $_POST['altersrollen_token'. $conf];
                 $altersrollen_anzahl++;
             }
-            //diese Zeile ist nur zur Sicherheit, falls ein Nutzer einen Refresh (F5) des Browsers ausfuehrt
-            //und dadurch nicht durch das Plugin kontrollierte Loeschungen oder Hinzufuegungen ausfuehrt
+            // diese Zeile ist nur zur Sicherheit, falls ein Nutzer einen Refresh (F5) des Browsers ausfuehrt
+            // und dadurch nicht durch das Plugin kontrollierte Loeschungen oder Hinzufuegungen ausfuehrt
             if($altersrollen_anzahl == 0)
             {
                 $gMessage->show($gL10n->get('PLG_MITGLIEDSBEITRAG_ERROR_MIN_CONFIG'));
@@ -75,7 +75,7 @@ try
             break;
 
         case 'familyroles':
-            //familienrollen_pruefung zwischenspeichern
+            // familienrollen_pruefung zwischenspeichern
             $familienrollen_pruefung = $pPreferences->config['Familienrollen']['familienrollen_pruefung'];
 
             unset($pPreferences->config['Familienrollen']);

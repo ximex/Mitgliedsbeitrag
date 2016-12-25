@@ -4,7 +4,7 @@
  * Dieses Plugin generiert fuer jedes aktive und ehemalige Mitglied eine Mitgliedsnummer.
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Hinweis:   Die erzeugten Mitgliedsnummern sind numerisch.
@@ -33,7 +33,7 @@ if(!check_showpluginPMB($pPreferences->config['Pluginfreigabe']['freigabe']))
 $members = array();
 $message = '';
 
-//pruefen, ob doppelte Mitgliedsnummern bestehen
+// pruefen, ob doppelte Mitgliedsnummern bestehen
 $nummer = erzeuge_mitgliedsnummer();
 
 // alle Mitglieder abfragen
@@ -73,7 +73,7 @@ foreach ($members as $member => $key)
     }
 }
 
-//alle Mitglieder durchlaufen und pruefen, ob eine Mitgliedsnummer existiert
+// alle Mitglieder durchlaufen und pruefen, ob eine Mitgliedsnummer existiert
  foreach ($members as $member => $key)
 {
     if (($members[$member]['PMB_MEMBERNUMBER'] == '') || ($members[$member]['PMB_MEMBERNUMBER'] < 1))

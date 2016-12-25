@@ -4,7 +4,7 @@
  * Erzeugt das Einstellungen-Menue fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Parameters:
@@ -203,7 +203,7 @@ $page->addHtml('
 
                         $text = new TableText($gDb);
                         $text->readDataByColumns(array('txt_name' => 'PMBMAIL_CONTRIBUTION_PAYMENTS', 'txt_org_id' => $gCurrentOrganization->getValue('org_id')));
-                        //wenn noch nichts drin steht, dann vorbelegen
+                        // wenn noch nichts drin steht, dann vorbelegen
                         if ($text->getValue('txt_text') == '')
                         {
                             // convert <br /> to a normal line feed
@@ -386,7 +386,7 @@ $page->addHtml('
                                         <strong>#membership_fee_text#</strong> - '.$gL10n->get('PLG_MITGLIEDSBEITRAG_VARIABLE_MEMBERSHIP_FEE_TEXT').'</p>');
 
                         $text->readDataByColumns(array('txt_name' => 'PMBMAIL_PRE_NOTIFICATION', 'txt_org_id' => $gCurrentOrganization->getValue('org_id')));
-                        //wenn noch nichts drin steht, dann vorbelegen
+                        // wenn noch nichts drin steht, dann vorbelegen
                         if ($text->getValue('txt_text') == '')
                         {
                             // convert <br /> to a normal line feed
@@ -613,7 +613,7 @@ $page->addHtml('
                         $form->addStaticControl('plg_name', $gL10n->get('PLG_MITGLIEDSBEITRAG_PLUGIN_NAME'), $gL10n->get('PLG_MITGLIEDSBEITRAG_MEMBERSHIP_FEE'));
                         $form->addStaticControl('plg_version', $gL10n->get('PLG_MITGLIEDSBEITRAG_PLUGIN_VERSION'), $pPreferences->config['Plugininformationen']['version']);
                         $form->addStaticControl('plg_date', $gL10n->get('PLG_MITGLIEDSBEITRAG_PLUGIN_DATE'), $pPreferences->config['Plugininformationen']['stand']);
-                        $html = '<a class="btn" href="http://www.admidio.de/dokuwiki/doku.php?id=de:plugins:mitgliedsbeitrag" target="_blank"><img
+                        $html = '<a class="btn" href="https://www.admidio.org/dokuwiki/doku.php?id=de:plugins:mitgliedsbeitrag" target="_blank"><img
                                     src="'. THEME_URL . '/icons/eye.png" alt="'.$gL10n->get('PLG_MITGLIEDSBEITRAG_DOCUMENTATION_OPEN').'" />'.$gL10n->get('PLG_MITGLIEDSBEITRAG_DOCUMENTATION_OPEN').'</a>';
                         $form->addCustomContent($gL10n->get('PLG_MITGLIEDSBEITRAG_DOCUMENTATION'), $html, array('helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_DOCUMENTATION_OPEN_DESC'));
                         $page->addHtml($form->show(false));

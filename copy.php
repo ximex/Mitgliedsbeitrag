@@ -4,7 +4,7 @@
  * Kopieren von Profildaten fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Parameters:
@@ -224,7 +224,7 @@ else
         $htmlProfileField   = '&nbsp;';
         $htmlTargetMarker   = '&nbsp;';
 
-        //1. Spalte
+        // 1. Spalte
         if(strlen($userSource->getValue($field->getValue('usf_name_intern'))) > 0)
         {
             $htmlSource = '<div class="sourceval_'.$field->getValue('usf_id').'" id="sourceval_'.$field->getValue('usf_id').'">'.$userSource->getValue($field->getValue('usf_name_intern')).'</div>';
@@ -234,16 +234,16 @@ else
             $htmlSource = '<div class="sourceval_'.$field->getValue('usf_id').'" id="sourceval_'.$field->getValue('usf_id').'">'.'&nbsp;'.'</div>';
         }
 
-        //2. Spalte
+        // 2. Spalte
         $htmlSourceMarker = '<input type="checkbox" id="sourcefield_'.$field->getValue('usf_id').'" name="sourcefield_'.$field->getValue('usf_id').'" class="sourcelist_checkbox" /><b id="loadindicator_sourcefield_'.$field->getValue('usf_id').'"></b>';
 
-        //3. Spalte
+        // 3. Spalte
         $htmlProfileField   = addslashes($field->getValue('usf_name'));
 
-        //4. Spalte
+        // 4. Spalte
         $htmlTargetMarker = '<input type="checkbox" id="targetfield_'.$field->getValue('usf_id').'" name="targetfield_'.$field->getValue('usf_id').'" class="targetlist_checkbox" /><b id="loadindicator_targetfield_'.$field->getValue('usf_id').'"></b>';
 
-        //5. Spalte
+        // 5. Spalte
         if(strlen($userTarget->getValue($field->getValue('usf_name_intern'))) > 0)
         {
             $htmlTarget = '<div class="targetval_'.$field->getValue('usf_id').'" id="targetval_'.$field->getValue('usf_id').'">'.$userTarget->getValue($field->getValue('usf_name_intern')).'</div>';
@@ -263,7 +263,7 @@ else
             );
 
         $table->addRowByArray($columnValues);
-    }//End Foreach
+    }// End Foreach
 
     $page->addHtml($table->show(false));
     $page->show();

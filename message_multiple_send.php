@@ -4,7 +4,7 @@
  * Check message information and save it
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Hinweis:   message_multiple_send.php ist eine modifizierte messages_send.php
@@ -19,7 +19,7 @@ require_once(__DIR__ . '/../../adm_program/system/template.php');
 require_once(__DIR__ . '/common_function.php');
 require_once(__DIR__ . '/classes/configtable.php');
 
-// $pPreferences ist auch fuer die korrekte Aufloesung des Parameters #creditor_id# erforderlich
+//$pPreferences ist auch fuer die korrekte Aufloesung des Parameters #creditor_id# erforderlich
 $pPreferences = new ConfigTablePMB();
 $pPreferences->read();
 
@@ -40,7 +40,7 @@ $postBodySQL                = admFuncVariableIsValid($_POST, 'msg_body', 'string
 $postDeliveryConfirmation   = admFuncVariableIsValid($_POST, 'delivery_confirmation', 'boolean', array('defaultValue' => 0));
 $postCarbonCopy             = admFuncVariableIsValid($_POST, 'carbon_copy', 'boolean', array('defaultValue' => 0));
 
-//vorbelegen
+// vorbelegen
 $getMsgType      = 'EMAIL';
 
 $postName = $gCurrentUser->getValue('FIRST_NAME'). ' '. $gCurrentUser->getValue('LAST_NAME');
@@ -98,7 +98,7 @@ foreach ($user_array as $userId)
         $gMessage->show($gL10n->get('SYS_INVALID_PAGE_VIEW'));
     }
 
-    //Datensatz fuer E-Mail-Adresse zusammensetzen
+    // Datensatz fuer E-Mail-Adresse zusammensetzen
     if(strlen($user->getValue('DEBTOR')) > 0)
     {
         if(strlen($user->getValue('DEBTOR_EMAIL')) > 0)
@@ -208,7 +208,7 @@ foreach ($user_array as $userId)
         }
     }
 
-    //den gefundenen User dem Mailobjekt hinzufuegen...
+    // den gefundenen User dem Mailobjekt hinzufuegen...
     $email->addRecipient($postTo, $empfaenger);
 
     // add confirmation mail to the sender

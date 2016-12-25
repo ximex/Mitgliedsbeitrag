@@ -4,7 +4,7 @@
  * Check message information and save it
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Hinweis:   message_send.php ist eine modifizierte messages_send.php
@@ -31,7 +31,7 @@ $postBodySQL                = admFuncVariableIsValid($_POST, 'msg_body', 'string
 $postDeliveryConfirmation   = admFuncVariableIsValid($_POST, 'delivery_confirmation', 'boolean', array('defaultValue' => 0));
 $postCarbonCopy             = admFuncVariableIsValid($_POST, 'carbon_copy', 'boolean', array('defaultValue' => 0));
 
-//vorbelegen
+// vorbelegen
 $getMsgType      = 'EMAIL';
 
 // Stop if mail should be send and mail module is disabled

@@ -12,12 +12,12 @@
  * Compatible with Admidio version 3.2
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  ***********************************************************************************************
  */
 
-//Fehlermeldungen anzeigen
+// Fehlermeldungen anzeigen
 //error_reporting(E_ALL);
 
 require_once(__DIR__ . '/../../adm_program/system/common.php');
@@ -35,11 +35,11 @@ if(!isset($_SESSION['pmbDeinst']))
     $checked = $pPreferences->checkforupdate();
     $startprog = 'menue.php';
 
-    if ($checked == 1)        //Update (Konfigurationdaten sind vorhanden, der Stand ist aber unterschiedlich zur Version.php)
+    if ($checked == 1)        // Update (Konfigurationdaten sind vorhanden, der Stand ist aber unterschiedlich zur Version.php)
     {
         $pPreferences->init();
     }
-    elseif ($checked == 2)        //Installationsroutine durchlaufen
+    elseif ($checked == 2)        // Installationsroutine durchlaufen
     {
         $startprog = 'installation.php';
         $pPreferences->init();

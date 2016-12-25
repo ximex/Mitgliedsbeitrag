@@ -4,7 +4,7 @@
  * Erzeugt das Menue fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Parameters:        keine
@@ -35,13 +35,13 @@ $directdebittype = false;
 $duedatecount = 0;
 $paidcount = 0;
 
-//alle Mitglieder einlesen
+// alle Mitglieder einlesen
 $members = list_members(array('DUEDATE'.$gCurrentOrganization->getValue('org_id'), 'SEQUENCETYPE'.$gCurrentOrganization->getValue('org_id'), 'PAID'.$gCurrentOrganization->getValue('org_id'), 'FEE'.$gCurrentOrganization->getValue('org_id'), 'MANDATEID'.$gCurrentOrganization->getValue('org_id'), 'MANDATEDATE'.$gCurrentOrganization->getValue('org_id'), 'IBAN', 'BIC'), 0);
 
-//jetzt wird gezaehlt
+// jetzt wird gezaehlt
 foreach ($members as $member => $memberdata)
 {
-    //alle Faelligkeitsdaten einlesen
+    // alle Faelligkeitsdaten einlesen
     if (!empty($memberdata['DUEDATE'.$gCurrentOrganization->getValue('org_id')]))
     {
         $duedatecount++;
@@ -257,25 +257,25 @@ if(count($rols) > 0)
                             // show form
                             $form = new HtmlForm('delete_all_form', ADMIDIO_URL . FOLDER_PLUGINS . $plugin_folder .'/menue_function.php?form=delete', $page, array('class' => 'form-preferences'));
                             $form->addDescription('<strong>'.$gL10n->get('PLG_MITGLIEDSBEITRAG_CONTRIBUTION_DELETE_DESC').'</strong>');
-                            $form->addInput('delete_all', $gL10n->get('PLG_MITGLIEDSBEITRAG_DELETE_ALL'), ($beitrag['BEITRAG_kto_anzahl']+$beitrag['BEITRAG_rech_anzahl']), array('property' => FIELD_READONLY, 'helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_DELETE_ALL_DESC'));                             //FIELD_DISABLED
+                            $form->addInput('delete_all', $gL10n->get('PLG_MITGLIEDSBEITRAG_DELETE_ALL'), ($beitrag['BEITRAG_kto_anzahl']+$beitrag['BEITRAG_rech_anzahl']), array('property' => FIELD_READONLY, 'helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_DELETE_ALL_DESC'));                             // FIELD_DISABLED
                             $form->addSubmitButton('btn_delete_all', $gL10n->get('PLG_MITGLIEDSBEITRAG_DELETE'), array('icon' => THEME_URL .'/icons/delete.png',  'class' => 'btn-primary col-sm-offset-3'));
                             $page->addHtml($form->show(false));
 
                             $form = new HtmlForm('with_paid_form', ADMIDIO_URL . FOLDER_PLUGINS . $plugin_folder .'/menue_function.php?form=delete', $page, array('class' => 'form-preferences'));
                             $form->addLine();
-                            $form->addInput('with_paid', $gL10n->get('PLG_MITGLIEDSBEITRAG_WITH_PAID'), ($beitrag['BEZAHLT_kto_anzahl']+$beitrag['BEZAHLT_rech_anzahl']), array('property' => FIELD_READONLY, 'helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_WITH_PAID_DESC'));                             //FIELD_DISABLED
+                            $form->addInput('with_paid', $gL10n->get('PLG_MITGLIEDSBEITRAG_WITH_PAID'), ($beitrag['BEZAHLT_kto_anzahl']+$beitrag['BEZAHLT_rech_anzahl']), array('property' => FIELD_READONLY, 'helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_WITH_PAID_DESC'));                             // FIELD_DISABLED
                             $form->addSubmitButton('btn_with_paid', $gL10n->get('PLG_MITGLIEDSBEITRAG_DELETE'), array('icon' => THEME_URL .'/icons/delete.png',  'class' => 'btn-primary col-sm-offset-3'));
                             $page->addHtml($form->show(false));
 
                             $form = new HtmlForm('without_paid_form', ADMIDIO_URL . FOLDER_PLUGINS . $plugin_folder .'/menue_function.php?form=delete', $page, array('class' => 'form-preferences'));
                             $form->addLine();
-                            $form->addInput('without_paid', $gL10n->get('PLG_MITGLIEDSBEITRAG_WITHOUT_PAID'), (($beitrag['BEITRAG_kto_anzahl']+$beitrag['BEITRAG_rech_anzahl'])-($beitrag['BEZAHLT_kto_anzahl']+$beitrag['BEZAHLT_rech_anzahl'])), array('property' => FIELD_READONLY, 'helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_WITHOUT_PAID_DESC'));                             //FIELD_DISABLED
+                            $form->addInput('without_paid', $gL10n->get('PLG_MITGLIEDSBEITRAG_WITHOUT_PAID'), (($beitrag['BEITRAG_kto_anzahl']+$beitrag['BEITRAG_rech_anzahl'])-($beitrag['BEZAHLT_kto_anzahl']+$beitrag['BEZAHLT_rech_anzahl'])), array('property' => FIELD_READONLY, 'helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_WITHOUT_PAID_DESC'));                             // FIELD_DISABLED
                             $form->addSubmitButton('btn_without_paid', $gL10n->get('PLG_MITGLIEDSBEITRAG_DELETE'), array('icon' => THEME_URL .'/icons/delete.png',  'class' => 'btn-primary col-sm-offset-3'));
                             $page->addHtml($form->show(false));
 
                             $form = new HtmlForm('paid_only_form', ADMIDIO_URL . FOLDER_PLUGINS . $plugin_folder .'/menue_function.php?form=delete', $page, array('class' => 'form-preferences'));
                             $form->addLine();
-                            $form->addInput('paid_only', $gL10n->get('PLG_MITGLIEDSBEITRAG_PAID_ONLY'), $paidcount, array('property' => FIELD_READONLY, 'helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_PAID_ONLY_DESC'));                             //FIELD_DISABLED
+                            $form->addInput('paid_only', $gL10n->get('PLG_MITGLIEDSBEITRAG_PAID_ONLY'), $paidcount, array('property' => FIELD_READONLY, 'helpTextIdInline' => 'PLG_MITGLIEDSBEITRAG_PAID_ONLY_DESC'));                             // FIELD_DISABLED
                             $form->addSubmitButton('btn_paid_only', $gL10n->get('PLG_MITGLIEDSBEITRAG_DELETE'), array('icon' => THEME_URL .'/icons/delete.png',  'class' => 'btn-primary col-sm-offset-3'));
                             $page->addHtml($form->show(false));
 
@@ -762,7 +762,7 @@ if(count($rols) > 0)
                             }
                             $form->closeGroupBox();
 
-                            //seltsamerweise wird in diesem Abschnitt nichts angezeigt wenn diese Anweisung fehlt
+                            // seltsamerweise wird in diesem Abschnitt nichts angezeigt wenn diese Anweisung fehlt
                             $form->addStaticControl('', '', '');
 
                             $page->addHtml($form->show(false));
@@ -819,7 +819,7 @@ else
     $form = new HtmlForm('no_roles_defined_form', null, $page);
     $html = '<div class="alert alert-warning alert-small" role="alert"><span class="glyphicon glyphicon-warning-sign"></span>'.$gL10n->get('PLG_MITGLIEDSBEITRAG_NO_CONTRIBUTION_ROLES_DEFINED').'</div>';
     $form->addDescription($html);
-    //seltsamerweise wird in diesem Abschnitt nichts angezeigt wenn diese Anweisung fehlt
+    // seltsamerweise wird in diesem Abschnitt nichts angezeigt wenn diese Anweisung fehlt
     $form->addStaticControl('', '', '');
     $page->addHtml($form->show(false));
 }

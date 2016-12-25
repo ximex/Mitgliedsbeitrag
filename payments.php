@@ -4,7 +4,7 @@
  * Setzen eines Bezahlt-Datums fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Hinweis:   payments.php ist eine modifizierte members_assignment.php
@@ -37,10 +37,10 @@ if(!check_showpluginPMB($pPreferences->config['Pluginfreigabe']['freigabe']))
     $gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
 }
 
- //alle Beitragsrollen einlesen
+// alle Beitragsrollen einlesen
 $rols = beitragsrollen_einlesen('', array('FIRST_NAME', 'LAST_NAME', 'IBAN', 'DEBTOR'));
 
-//falls eine Rollenabfrage durchgefuehrt wurde, die Rollen, die nicht gewaehlt wurden, loeschen
+// falls eine Rollenabfrage durchgefuehrt wurde, die Rollen, die nicht gewaehlt wurden, loeschen
 if ($pPreferences->config['Beitrag']['zahlungen_rollenwahl'][0] != ' ')
 {
     foreach ($rols as $rol => $roldata)
@@ -52,7 +52,7 @@ if ($pPreferences->config['Beitrag']['zahlungen_rollenwahl'][0] != ' ')
     }
 }
 
-//umwandeln von array nach string wg SQL-Statement
+// umwandeln von array nach string wg SQL-Statement
 $rolesString = implode(',', array_keys($rols));
 
 if(isset($_GET['mode']) && $_GET['mode'] == 'assign')
@@ -88,10 +88,10 @@ if($getMode == 'assign')
         {
             $user = new User($gDb, $gProfileFields, $data);
 
-            //zuerst mal sehen, ob bei diesem user bereits ein BEZAHLT-Datum vorhanden ist
+            // zuerst mal sehen, ob bei diesem user bereits ein BEZAHLT-Datum vorhanden ist
             if (strlen($user->getValue('PAID'.$gCurrentOrganization->getValue('org_id'))) === 0)
             {
-                //er hat noch kein BEZAHLT-Datum, deshalb ein neues eintragen
+                // er hat noch kein BEZAHLT-Datum, deshalb ein neues eintragen
                 $user->setValue('PAID'.$gCurrentOrganization->getValue('org_id'), $getDatumNeu);
 
                 // wenn Lastschrifttyp noch nicht gesetzt ist: als Folgelastschrift kennzeichnen
@@ -103,7 +103,7 @@ if($getMode == 'assign')
                     $user->setValue('SEQUENCETYPE'.$gCurrentOrganization->getValue('org_id'), 'RCUR');
                 }
 
-                //falls Daten von einer Mandatsaenderung vorhanden sind, diese loeschen
+                // falls Daten von einer Mandatsaenderung vorhanden sind, diese loeschen
                 if (strlen($user->getValue('ORIG_MANDATEID'.$gCurrentOrganization->getValue('org_id'))) !== 0)
                 {
                     $user->setValue('ORIG_MANDATEID'.$gCurrentOrganization->getValue('org_id'), '');
@@ -117,7 +117,7 @@ if($getMode == 'assign')
                     $user->setValue('ORIG_DEBTOR_AGENT', '');
                 }
 
-                //das Faelligkeitsdatum loeschen (wird nicht mehr gebraucht, da ja bezahlt)
+                // das Faelligkeitsdatum loeschen (wird nicht mehr gebraucht, da ja bezahlt)
                 if (strlen($user->getValue('DUEDATE'.$gCurrentOrganization->getValue('org_id'))) !== 0)
                 {
                     $user->setValue('DUEDATE'.$gCurrentOrganization->getValue('org_id'), '');
@@ -125,7 +125,7 @@ if($getMode == 'assign')
             }
             else
             {
-                //er hat bereits ein BEZAHLT-Datum, deshalb das vorhandene loeschen
+                // er hat bereits ein BEZAHLT-Datum, deshalb das vorhandene loeschen
                 $user->setValue('PAID'.$gCurrentOrganization->getValue('org_id'), '');
             }
             $user->save();
@@ -414,7 +414,7 @@ else
         $htmlDueDate  = '&nbsp;';
         $lastschrifttyp = '';
 
-        //1. Spalte ($htmlBezahltStatus)+ 2. Spalte ($htmlBezahltDate)
+        // 1. Spalte ($htmlBezahltStatus)+ 2. Spalte ($htmlBezahltDate)
         if(strlen($user['bezahlt']) > 0)
         {
             $htmlBezahltStatus = '<input type="checkbox" id="member_'.$user['usr_id'].'" name="member_'.$user['usr_id'].'" checked="checked" class="memlist_checkbox memlist_member" /><b id="loadindicator_member_'.$user['usr_id'].'"></b>';
@@ -427,7 +427,7 @@ else
             $htmlBezahltDate = '<div class="bezahlt_'.$user['usr_id'].'" id="bezahlt_'.$user['usr_id'].'">&nbsp;</div>';
         }
 
-        //3. Spalte ($htmlDuedate)
+        // 3. Spalte ($htmlDuedate)
         if(strlen($user['duedate']) > 0)
         {
             $duedateTemp = new DateTimeExtended($user['duedate'], 'Y-m-d');
@@ -438,7 +438,7 @@ else
             $htmlDuedate = '<div class="duedate_'.$user['usr_id'].'" id="duedate_'.$user['usr_id'].'">&nbsp;</div>';
         }
 
-        //4. Spalte ($htmlLastschrifttyp)
+        // 4. Spalte ($htmlLastschrifttyp)
         switch($user['lastschrifttyp'])
         {
             case 'RCUR':
@@ -461,17 +461,17 @@ else
             $htmlLastschrifttyp = '<div class="lastschrifttyp_'.$user['usr_id'].'" id="lastschrifttyp_'.$user['usr_id'].'">&nbsp;</div>';
         }
 
-        //5. Spalte ($htmlBeitrag)
+        // 5. Spalte ($htmlBeitrag)
         if($user['beitrag'] > 0)
         {
             $htmlBeitrag = $user['beitrag'].' '.$gPreferences['system_currency'];
         }
 
-        //6. Spalte (Nachname)
+        // 6. Spalte (Nachname)
 
-        //7. Spalte (Vorname)
+        // 7. Spalte (Vorname)
 
-        //8. Spalte ($htmlAddress)
+        // 8. Spalte ($htmlAddress)
         // create string with user address
         if(strlen($user['zip_code']) > 0 || strlen($user['city']) > 0)
         {
@@ -485,9 +485,9 @@ else
         {
             $htmlAddress = '<img class="admidio-icon-info" src="'. THEME_URL .'/icons/map.png" alt="'.$addressText.'" title="'.$addressText.'" />';
         }
-        //9. Spalte ($addressText)
+        // 9. Spalte ($addressText)
 
-        //10. Spalte ($htmlDebtorText)
+        // 10. Spalte ($htmlDebtorText)
         if(strlen($user['debtor']) > 0)
         {
             $debtor_text = $user['debtor'];
@@ -505,7 +505,7 @@ else
             $htmlDebtorText = '<img class="admidio-icon-info" src="'. THEME_URL .'/icons/info.png" alt="'.$debtor_text.'" title="'.$debtor_text.'" />';
         }
 
-        //11. Spalte ($htmlMail)
+        // 11. Spalte ($htmlMail)
         if(strlen($user['debtor']) > 0)
         {
             if(strlen($user['debtoremail']) > 0)
@@ -534,9 +534,9 @@ else
                     alt="'.$gL10n->get('SYS_SEND_EMAIL_TO', $email).'" title="'.$gL10n->get('SYS_SEND_EMAIL_TO', $email).'" /></a>';
         }
 
-        //12. Spalte ($email)
+        // 12. Spalte ($email)
 
-        //13. Spalte ($htmlBirthday)
+        // 13. Spalte ($htmlBirthday)
         if(strlen($user['birthday']) > 0)
         {
             $birthdayDate = new DateTimeExtended($user['birthday'], 'Y-m-d');
@@ -544,7 +544,7 @@ else
             $birthdayDateSort = $birthdayDate->format('Ymd');
         }
 
-        //14. Spalte ($birthdayDateSort)
+        // 14. Spalte ($birthdayDateSort)
 
         // create array with all column values
         $columnValues = array(
@@ -567,7 +567,7 @@ else
         $table->addRowByArray($columnValues, 'userid_'.$user['usr_id']);
         $userArray[] = $user['usr_id'];
 
-    }//End While
+    }// End While
 
     $_SESSION['userArray'] = $userArray;
 

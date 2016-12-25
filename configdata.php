@@ -4,7 +4,7 @@
  * Konfigurationsdaten fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  ***********************************************************************************************
@@ -12,7 +12,7 @@
 
 global $gL10n, $gProfileFields;
 
-//Standardwerte einer Neuinstallation
+// Standardwerte einer Neuinstallation
 $config_default['Pluginfreigabe']['freigabe'] = array(getRole_IDPMB($gL10n->get('SYS_WEBMASTER')),
                                                        getRole_IDPMB($gL10n->get('SYS_MEMBER')));
 $config_default['Pluginfreigabe']['freigabe_config'] = array(getRole_IDPMB($gL10n->get('SYS_WEBMASTER')),
@@ -29,7 +29,7 @@ $config_default['Familienrollen'] = array('familienrollen_beitrag'        => arr
                                             'familienrollen_prefix'       => array('Familie'),
                                             'familienrollen_pruefung'     => array(''));
 
-//Beitrag
+// Beitrag
 $config_default['Beitrag'] = array('beitrag_prefix'         => 'Mitgliedsbeitrag 2016',
                                     'beitrag_suffix'        => '(ant.)',
                                     'beitrag_modus'         => 'standard',
@@ -42,7 +42,7 @@ $config_default['Beitrag'] = array('beitrag_prefix'         => 'Mitgliedsbeitrag
                                     'beitrag_abrunden'      => 1,
                                     'beitrag_mindestbetrag' => 0);
 
-//Kontodaten
+// Kontodaten
 $config_default['Kontodaten'] = array('bank'           => 'Sparkasse Musterstadt',
                                         'inhaber'      => 'Musterverein e.V.',
                                         'iban'         => 'DE123456789',
@@ -51,14 +51,14 @@ $config_default['Kontodaten'] = array('bank'           => 'Sparkasse Musterstadt
                                         'origcreditor' => '',
                                         'origci'       => '');
 
-//Mandatsreferenz
+// Mandatsreferenz
 $config_default['Mandatsreferenz'] = array('prefix_fam'  => 'FAM',
                                             'prefix_mem' => 'MIT',
                                             'prefix_pay' => 'ZAL',
                                             'min_length' => 15,
                                             'data_field' => '-- User_ID --');
 
-//Rollenpruefung
+// Rollenpruefung
 $config_default['Rollenpruefung'] = array('altersrollenfamilienrollen' => array(' '),
                                             'altersrollenpflicht'      => array(' '),
                                             'familienrollenpflicht'    => '',
@@ -68,10 +68,10 @@ $config_default['Rollenpruefung'] = array('altersrollenfamilienrollen' => array(
                                             'familienrollenfix'        => array(' '),
                                             'altersrollenfix'          => array(' '));
 
-//Rechnungs-Export
+// Rechnungs-Export
 $config_default['Rechnungs-Export'] = array('rechnung_dateiname' => 'rechnung.csv');
 
-//SEPA
+// SEPA
 $config_default['SEPA'] = array('dateiname'                  => 'sepa',
                                 'kontroll_dateiname'         => 'sepa',
                                 'vorabinformation_dateiname' => 'export',

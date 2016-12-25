@@ -4,7 +4,7 @@
  * Installationsroutine fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Parameters:
@@ -495,7 +495,7 @@ if($getMode == 'anlegen')
     }
 }
 
-if($getMode == 'start' || $getMode == 'anlegen')     //Default: start
+if($getMode == 'start' || $getMode == 'anlegen')     // Default: start
 {
     $arr = check_DB();
 
@@ -923,12 +923,12 @@ function check_DB()
 {
     global $gDb,$gCurrentOrganization,$gL10n;
 
-    //Mit der Version 3.3.0 wurde die Installationsroutine umprogrammiert.
-    //Frueher wurde auf usf_name geprueft, jetzt auf usf_name_intern.
-    //Die Installationsscripte der Versionen 1.x und 2.x befuellten jedoch
+    // Mit der Version 3.3.0 wurde die Installationsroutine umprogrammiert.
+    // Frueher wurde auf usf_name geprueft, jetzt auf usf_name_intern.
+    // Die Installationsscripte der Versionen 1.x und 2.x befuellten jedoch
     // von der Kategorie kontodaten usf_name_intern nicht mit dem Wert KONTODATEN.
-    //Hier wird deshalb ueberprueft, ob es eine Kategorie kontodaten gibt.
-    //Falls von dieser Kategorie der usf_name_intern leer ist, wird er mit KONTODATEN beschrieben.
+    // Hier wird deshalb ueberprueft, ob es eine Kategorie kontodaten gibt.
+    // Falls von dieser Kategorie der usf_name_intern leer ist, wird er mit KONTODATEN beschrieben.
 
     $sql = ' SELECT cat_name, cat_name_intern
             FROM '. TBL_CATEGORIES. '
@@ -950,7 +950,7 @@ function check_DB()
         $gDb->query($sql);
     }
 
-    //Update/Konvertierungsroutine 4.1.2
+    // Update/Konvertierungsroutine 4.1.2
     // mit Version 4.1.2 wird die Struktur der DB-Eintraege an Admidio angepasst
     // deutsche Bezeichnungen werden durch englische Bezeichnungen ersetzt
     $update_array = array();
@@ -1079,7 +1079,7 @@ function check_DB()
     }
     // Ende Update/Konvertierungsroutine
 
-    // $DB_array['SOLL'] beinhaltet die erforderlichen Werte fuer die Kategorien und die User Fields
+    //$DB_array['SOLL'] beinhaltet die erforderlichen Werte fuer die Kategorien und die User Fields
     $DB_array['SOLL']['TBL_CATEGORIES']['Kontodaten']       = array('cat_id' => -1, 'cat_org_id' => 'Null',                                    'cat_name' => 'PMB_ACCOUNT_DATA',   'cat_name_intern' => 'ACCOUNT_DATA',                                             'cat_type' => 'USF', 'cat_system' => 0, 'cat_hidden' => 0);
     $DB_array['SOLL']['TBL_CATEGORIES']['Mitgliedsbeitrag'] = array('cat_id' => -1, 'cat_org_id' => $gCurrentOrganization->getValue('org_id'), 'cat_name' => 'PMB_MEMBERSHIP_FEE', 'cat_name_intern' => 'MEMBERSHIP_FEE'.$gCurrentOrganization->getValue('org_id'), 'cat_type' => 'USF', 'cat_system' => 0, 'cat_hidden' => 0);
     $DB_array['SOLL']['TBL_CATEGORIES']['Mitgliedschaft']   = array('cat_id' => -1, 'cat_org_id' => $gCurrentOrganization->getValue('org_id'), 'cat_name' => 'PMB_MEMBERSHIP',     'cat_name_intern' => 'MEMBERSHIP'.$gCurrentOrganization->getValue('org_id'),     'cat_type' => 'USF', 'cat_system' => 0, 'cat_hidden' => 0);

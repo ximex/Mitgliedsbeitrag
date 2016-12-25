@@ -4,7 +4,7 @@
  * Class manages the configuration table
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  ***********************************************************************************************
  */
@@ -101,7 +101,7 @@ class ConfigTablePMB
         {
             $this->config['Rollenpruefung']['bezugskategorie'][0] = ' ';
         }
-        //Update/Konvertierungsroutine 4.0.0 -> 4.1.0
+        // Update/Konvertierungsroutine 4.0.0 -> 4.1.0
         // seit 01.02.2016 gibt es keine Kontonummern mehr; sollen alle Kontonummern und Bankleitzahlen automatisch geloescht werden,
         // so sind in den naechsten beiden Zeilen die fuehrenden "//" zu entfernen
         //$this->delete_member_data(3,'KONTONUMMER');
@@ -114,7 +114,7 @@ class ConfigTablePMB
         //  1 = Daten in allen Orgs loeschen
         //  3 = Daten loeschen, die in allen Orgs sichtbar sind (z.B. Stammdaten)
 
-        //Update/Konvertierungsroutine 4.1.x -> 4.1.2
+        // Update/Konvertierungsroutine 4.1.x -> 4.1.2
         if(isset($this->config['Rollenpruefung']['altersrollenfamilienrollen']) && !is_array($this->config['Rollenpruefung']['altersrollenfamilienrollen']))
         {
             unset($this->config['Rollenpruefung']['altersrollenfamilienrollen']);
@@ -341,7 +341,7 @@ class ConfigTablePMB
         $fieldsarray[] = 'ORIG_DEBTOR_AGENT';
         $fieldsarray[] = 'ORIG_IBAN';
 
-        $fieldsString ='';
+        $fieldsString = '';
         foreach ($fieldsarray as $string)
         {
             $fieldsString .= "'".$string."',";
@@ -376,14 +376,14 @@ class ConfigTablePMB
         $result_data = false;
         $result_db = false;
 
-        if($deinst_org_select == 0)                    //0 = Daten nur in aktueller Org loeschen
+        if($deinst_org_select == 0)                    // 0 = Daten nur in aktueller Org loeschen
         {
             $sql = 'DELETE FROM '.$this->table_name.'
                     WHERE plp_name LIKE \''.self::$shortcut.'__%\'
                     AND plp_org_id = '.$gCurrentOrganization->getValue('org_id').' ';
             $result_data = $gDb->query($sql);
         }
-        elseif ($deinst_org_select == 1)              //1 = Daten in allen Org loeschen
+        elseif ($deinst_org_select == 1)              // 1 = Daten in allen Org loeschen
         {
             $sql = 'DELETE FROM '.$this->table_name.'
                     WHERE plp_name LIKE \''.self::$shortcut.'__%\' ';
@@ -420,11 +420,11 @@ class ConfigTablePMB
         $result = '';
         $usfIDs = array();
 
-        if($deinst_org_select == 0)                   //0 = Daten nur in aktueller Org loeschen
+        if($deinst_org_select == 0)                   // 0 = Daten nur in aktueller Org loeschen
         {
             $orgSelector = $gCurrentOrganization->getValue('org_id');
         }
-        elseif ($deinst_org_select == 1)              //1 = Daten in allen Org loeschen
+        elseif ($deinst_org_select == 1)              // 1 = Daten in allen Org loeschen
         {
             $orgSelector = '%';
             //$orgSelector = '_';
@@ -529,14 +529,14 @@ class ConfigTablePMB
         $result = '';
         $result_data = false;
 
-        if($deinst_org_select == 0)                    //0 = Daten nur in aktueller Org loeschen
+        if($deinst_org_select == 0)                    // 0 = Daten nur in aktueller Org loeschen
         {
             $sql = 'DELETE FROM '.TBL_TEXTS.'
                     WHERE txt_name LIKE \'PMBMAIL_%\'
                     AND txt_org_id = '.$gCurrentOrganization->getValue('org_id').' ';
             $result_data = $gDb->query($sql);
         }
-        elseif ($deinst_org_select == 1)              //1 = Daten in allen Org loeschen
+        elseif ($deinst_org_select == 1)              // 1 = Daten in allen Org loeschen
         {
             $sql = 'DELETE FROM '.TBL_TEXTS.'
                     WHERE txt_name LIKE \'PMBMAIL_%\' ';

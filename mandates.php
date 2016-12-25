@@ -4,7 +4,7 @@
  * Setzen eines Mandatsdatums fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Hinweis:   mandates.php ist eine modifizierte members_assignment.php
@@ -73,15 +73,15 @@ if($getMode == 'assign')
         {
             $user = new User($gDb, $gProfileFields, $data);
 
-            //zuerst mal sehen, ob bei diesem user bereits ein Mandatsdatum vorhanden ist
+            // zuerst mal sehen, ob bei diesem user bereits ein Mandatsdatum vorhanden ist
             if (strlen($user->getValue('MANDATEDATE'.$gCurrentOrganization->getValue('org_id'))) === 0)
             {
-                //er hat noch kein Mandatsdatum, deshalb ein neues eintragen
+                // er hat noch kein Mandatsdatum, deshalb ein neues eintragen
                 $user->setValue('MANDATEDATE'.$gCurrentOrganization->getValue('org_id'), $getDatumNeu);
             }
             else
             {
-                //er hat bereits ein Mandatsdatum, deshalb das vorhandene loeschen
+                // er hat bereits ein Mandatsdatum, deshalb das vorhandene loeschen
                 $user->setValue('MANDATEDATE'.$gCurrentOrganization->getValue('org_id'), '');
             }
 
@@ -352,7 +352,7 @@ else
         $htmlOrigIBAN = '&nbsp;';
         $htmlOrigDebtorAgent = '&nbsp;';
 
-        //1. Spalte ($htmlMandatStatus)+ 2. Spalte ($htmlMandatDate)
+        // 1. Spalte ($htmlMandatStatus)+ 2. Spalte ($htmlMandatDate)
         if(strlen($user['mandatsdatum']) > 0)
         {
             $htmlMandatStatus = '<input type="checkbox" id="member_'.$user['usr_id'].'" name="member_'.$user['usr_id'].'" checked="checked" class="memlist_checkbox memlist_member" /><b id="loadindicator_member_'.$user['usr_id'].'"></b>';
@@ -365,19 +365,19 @@ else
             $htmlMandatDate = '<div class="mandatedate_'.$user['usr_id'].'" id="mandatedate_'.$user['usr_id'].'">&nbsp;</div>';
         }
 
-        //3. Spalte ($htmlBeitrag)
+        // 3. Spalte ($htmlBeitrag)
         if(strlen($user['mandatsreferenz']) > 0)
         {
             $htmlMandateID = $user['mandatsreferenz'];
         }
 
-        //4. Spalte (Mandatsaenderung)
+        // 4. Spalte (Mandatsaenderung)
 
-        //5. Spalte (Nachname)
+        // 5. Spalte (Nachname)
 
-        //6. Spalte (Vorname)
+        // 6. Spalte (Vorname)
 
-        //7. Spalte ($htmlAddress)
+        // 7. Spalte ($htmlAddress)
         // create string with user address
          if(strlen($user['zip_code']) > 0 || strlen($user['city']) > 0)
         {
@@ -391,9 +391,9 @@ else
         {
             $htmlAddress = '<img class="admidio-icon-info" src="'. THEME_URL .'/icons/map.png" alt="'.$addressText.'" title="'.$addressText.'" />';
         }
-        //8. Spalte ($addressText)
+        // 8. Spalte ($addressText)
 
-        //9. Spalte ($htmlBirthday)
+        // 9. Spalte ($htmlBirthday)
         if(strlen($user['birthday']) > 0)
         {
             $birthdayDate = new DateTimeExtended($user['birthday'], 'Y-m-d');
@@ -401,9 +401,9 @@ else
             $birthdayDateSort = $birthdayDate->format('Ymd');
         }
 
-        //10. Spalte ($birthdayDateSort)
+        // 10. Spalte ($birthdayDateSort)
 
-        //11. Spalte und weiter: Anzeige von Mandatsaenderungen
+        // 11. Spalte und weiter: Anzeige von Mandatsaenderungen
         if(strlen($user['origmandatsreferenz']) > 0)
         {
             $htmlOrigMandateID = $user['origmandatsreferenz'];
@@ -438,7 +438,7 @@ else
         $table->addRowByArray($columnValues, 'userid_'.$user['usr_id']);
         $userArray[] = $user['usr_id'];
 
-    }//End While
+    }// End While
 
     $_SESSION['userArray'] = $userArray;
 

@@ -4,7 +4,7 @@
  * Rechnungs-Export fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Hinweis:   Grundgeruest erstellt von Günter Scheuermann
@@ -28,14 +28,14 @@ if(!check_showpluginPMB($pPreferences->config['Pluginfreigabe']['freigabe']))
     $gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
 }
 
-//alle Mitglieder einlesen
+// alle Mitglieder einlesen
 $members = list_members(array('FIRST_NAME', 'LAST_NAME', 'ADDRESS', 'POSTCODE', 'CITY', 'EMAIL', 'FEE'.$gCurrentOrganization->getValue('org_id'), 'CONTRIBUTORY_TEXT'.$gCurrentOrganization->getValue('org_id'), 'PAID'.$gCurrentOrganization->getValue('org_id'), 'IBAN', 'DEBTOR'), 0);
 
-//$rechnungs_file[] = array();
+/ $rechnungs_file[] = array();
 $rechnungs_file = array();
 $i = 0;
 
-//alle Mitglieder durchlaufen und aufgrund von Rollenzugehoerigkeiten die Beitraege bestimmen
+// alle Mitglieder durchlaufen und aufgrund von Rollenzugehoerigkeiten die Beitraege bestimmen
 foreach ($members as $member => $memberdata){
     if (empty($memberdata['IBAN'])
             &&  empty($memberdata['PAID'.$gCurrentOrganization->getValue('org_id')])

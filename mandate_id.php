@@ -4,7 +4,7 @@
  * Dieses Modul erzeugt Mandatsreferenzen
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Parameters:             keine
@@ -39,21 +39,21 @@ else
     $members = list_members(array('LAST_NAME', 'FIRST_NAME', 'DEBTOR', 'MANDATEID'.$gCurrentOrganization->getValue('org_id'), 'FEE'.$gCurrentOrganization->getValue('org_id'), 'CONTRIBUTORY_TEXT'.$gCurrentOrganization->getValue('org_id'), 'IBAN'), 0);
 }
 
-//alle Mitglieder loeschen, bei denen kein Beitrag berechnet wurde
+// alle Mitglieder loeschen, bei denen kein Beitrag berechnet wurde
 $members = array_filter($members, 'delete_without_BEITRAG');
 
-//alle Mitglieder loeschen, bei denen keine IBAN vorhanden ist
+// alle Mitglieder loeschen, bei denen keine IBAN vorhanden ist
 $members = array_filter($members, 'delete_without_IBAN');
 
-//alle Mitglieder loeschen, bei denen bereits eine Mandatsreferenz vorhanden ist
+// alle Mitglieder loeschen, bei denen bereits eine Mandatsreferenz vorhanden ist
 $members = array_filter($members, 'delete_with_MANDATEID');
 
-//alle uebriggebliebenen Mitglieder durchlaufen und eine Mandatsreferenz erzeugen
+// alle uebriggebliebenen Mitglieder durchlaufen und eine Mandatsreferenz erzeugen
 foreach ($members as $member => $memberdata)
 {
     $prefix = $pPreferences->config['Mandatsreferenz']['prefix_mem'];
 
-    //wenn 'DEBTOR' nicht leer ist, dann gibt es einen Zahlungspflichtigen
+    // wenn 'DEBTOR' nicht leer ist, dann gibt es einen Zahlungspflichtigen
     if($memberdata['DEBTOR'] != '')
     {
         $prefix = $pPreferences->config['Mandatsreferenz']['prefix_pay'];
@@ -77,9 +77,9 @@ foreach ($members as $member => $memberdata)
 
     $referenz = substr(str_pad($prefix, $pPreferences->config['Mandatsreferenz']['min_length']-strlen($suffix), '0').$suffix, 0, 35);
 
-    //ueberpruefen, ob die lfd. Nummer (=$suffix) auch befuellt ist
-    //u. U. wurde ein leeres Datenbankfeld ausgewaehlt;
-    //dabei wuerden dann Mandatsreferenzen mit endenden Nullen erzeugt
+    // ueberpruefen, ob die lfd. Nummer (=$suffix) auch befuellt ist
+    // u. U. wurde ein leeres Datenbankfeld ausgewaehlt;
+    // dabei wuerden dann Mandatsreferenzen mit endenden Nullen erzeugt
     if(!empty($suffix))
     {
         $user = new User($gDb, $gProfileFields, $member);

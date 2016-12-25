@@ -4,7 +4,7 @@
  * E-Mails versenden aus dem Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Hinweis:   message_write.php ist eine modifizierte messages_write.php
@@ -46,7 +46,7 @@ if ($gValidLogin && strlen($gCurrentUser->getValue('EMAIL')) === 0)
     $gMessage->show($gL10n->get('SYS_CURRENT_USER_NO_EMAIL', '<a href="'. ADMIDIO_URL . FOLDER_MODULES . '/profile/profile.php">', '</a>'));
 }
 
-//usr_id wurde uebergeben, dann Kontaktdaten des Users aus der DB fischen
+// usr_id wurde uebergeben, dann Kontaktdaten des Users aus der DB fischen
 $user = new User($gDb, $gProfileFields, $getUserId);
 
 // if an User ID is given, we need to check if the actual user is alowed to contact this user
@@ -59,7 +59,7 @@ if (($gCurrentUser->editUsers() == false && isMember($user->getValue('usr_id')) 
 // Subject und Body erzeugen
 $text = new TableText($gDb);
 
-//abhaengig vom aufrufenden Modul Text einlesen
+// abhaengig vom aufrufenden Modul Text einlesen
 if (substr_count($gNavigation->getUrl(), 'pre_notification') === 1)
 {
     $text->readDataByColumns(array('txt_name' => 'PMBMAIL_PRE_NOTIFICATION', 'txt_org_id' => $gCurrentOrganization->getValue('org_id')));
@@ -113,7 +113,7 @@ $messagesWriteMenu = new HtmlNavbar('menu_messages_write', $headline, $page);
 $messagesWriteMenu->addItem('menu_item_back', $gNavigation->getPreviousUrl(), $gL10n->get('SYS_BACK'), 'back.png');
 $page->addHtml($messagesWriteMenu->show(false));
 
- //Datensatz fuer E-Mail-Adresse zusammensetzen
+// Datensatz fuer E-Mail-Adresse zusammensetzen
 if(strlen($user->getValue('DEBTOR')) > 0)
 {
     if(strlen($user->getValue('DEBTOR_EMAIL')) > 0)
@@ -149,7 +149,7 @@ else
 // dann soll das Formular gefuellt werden mit den Werten aus der Session
 if (strpos($gNavigation->getUrl(), 'message_send.php') > 0 && isset($_SESSION['message_request']))
 {
-    // Das Formular wurde also schon einmal ausgef�llt,
+    // Das Formular wurde also schon einmal ausgefüllt,
     // da der User hier wieder gelandet ist nach der Mailversand-Seite
     $form_values = strStripSlashesDeep($_SESSION['message_request']);
     unset($_SESSION['message_request']);

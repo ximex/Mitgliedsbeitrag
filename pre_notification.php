@@ -4,7 +4,7 @@
  * Modul Vorabinformation fuer das Admidio-Plugin Mitgliedsbeitrag
  *
  * @copyright 2004-2016 The Admidio Team
- * @see http://www.admidio.org/
+ * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
  * Hinweis:   pre_notification.php ist eine modifizierte members_assignment.php
@@ -314,9 +314,9 @@ else
                             return false;
                         }
                         else {
-                             // var uriContent = "data:text/csv;charset=utf-8," + encodeURIComponent(data);
-                             // var myWindow = window.open(uriContent);
-                             // myWindow.focus(); 
+                             //var uriContent = "data:text/csv;charset=utf-8," + encodeURIComponent(data);
+                             //var myWindow = window.open(uriContent);
+                             //myWindow.focus(); 
                              var a = document.createElement("a");
                              a.href =  "data:text/csv;charset=utf-8," + encodeURIComponent(data);
                              a.target = "_blank";
@@ -417,7 +417,7 @@ else
 
         $navbarForm = new HtmlForm('navbar_show_all_users_form', '', $page, array('type' => 'navbar', 'setFocus' => false));
 
-        //alle Faelligkeitsdaten einlesen
+        // alle Faelligkeitsdaten einlesen
         $sql = 'SELECT DISTINCT usd_value
                 FROM '.TBL_USER_DATA.','. TBL_MEMBERS. ', '. TBL_ROLES. ', '. TBL_CATEGORIES. '
                 WHERE usd_usf_id = '. $gProfileFields->getProperty('DUEDATE'.$gCurrentOrganization->getValue('org_id'), 'usf_id').'
@@ -494,7 +494,7 @@ else
             $htmlLastschrifttyp = '&nbsp;';
             $lastschrifttyp = '';
 
-            //1. Spalte ($htmlDueDateStatus)
+            // 1. Spalte ($htmlDueDateStatus)
            if (in_array($user['usr_id'], $_SESSION['checkedArray']))
             {
                 $htmlDueDateStatus = '<input type="checkbox" id="member_'.$user['usr_id'].'" name="member_'.$user['usr_id'].'" checked="checked" class="memlist_checkbox" /><b id="loadindicator_member_'.$user['usr_id'].'"></b>';
@@ -504,14 +504,14 @@ else
                 $htmlDueDateStatus = '<input type="checkbox" id="member_'.$user['usr_id'].'" name="member_'.$user['usr_id'].'" class="memlist_checkbox" /><b id="loadindicator_member_'.$user['usr_id'].'"></b>';
             }
 
-            //2. Spalte ($htmlDueDate)
+            // 2. Spalte ($htmlDueDate)
            if($user['faelligkeitsdatum'] > 0)
             {
                $DueDate = new DateTimeExtended($user['faelligkeitsdatum'], 'Y-m-d');
                 $htmlDueDate = $DueDate->format($gPreferences['system_date']);
             }
 
-            //3. Spalte ($htmlLastschrifttyp)
+            // 3. Spalte ($htmlLastschrifttyp)
             switch($user['lastschrifttyp'])
             {
                case 'RCUR':
@@ -530,17 +530,17 @@ else
                $htmlLastschrifttyp = $lastschrifttyp;
             }
 
-            //4. Spalte ($htmlBeitrag)
+            // 4. Spalte ($htmlBeitrag)
             if($user['beitrag'] > 0)
             {
                 $htmlBeitrag = $user['beitrag'].' '.$gPreferences['system_currency'];
             }
 
-            //5. Spalte (Nachname)
+            // 5. Spalte (Nachname)
 
-            //6. Spalte (Vorname)
+            // 6. Spalte (Vorname)
 
-            //7. Spalte ($htmlAddress)
+            // 7. Spalte ($htmlAddress)
             if(strlen($user['zip_code']) > 0 || strlen($user['city']) > 0)
             {
                 $addressText .= $user['zip_code']. ' '. $user['city'];
@@ -554,9 +554,9 @@ else
                 $htmlAddress = '<img class="admidio-icon-info" src="'. THEME_URL .'/icons/map.png" alt="'.$addressText.'" title="'.$addressText.'" />';
             }
 
-            //8. Spalte ($addressText)
+            // 8. Spalte ($addressText)
 
-            //10. Spalte ($htmlDebtorText)
+            // 10. Spalte ($htmlDebtorText)
             if(strlen($user['debtor']) > 0)
             {
                 $debtor_text = $user['debtor'];
@@ -575,7 +575,7 @@ else
                 $htmlDebtorText = '<img class="admidio-icon-info" src="'. THEME_URL .'/icons/info.png" alt="'.$debtor_text.'" title="'.$debtor_text.'" />';
             }
 
-            //11. Spalte ($htmlMail)
+            // 11. Spalte ($htmlMail)
             if(strlen($user['debtor']) > 0)
             {
                  if(strlen($user['debtoremail']) > 0)
@@ -604,7 +604,7 @@ else
                     alt="'.$gL10n->get('SYS_SEND_EMAIL_TO', $email).'" title="'.$gL10n->get('SYS_SEND_EMAIL_TO', $email).'" /></a>';
             }
 
-            //12. Spalte ($email)
+            // 12. Spalte ($email)
 
             if(strlen($user['mandatsreferenz']) > 0)
             {
@@ -629,7 +629,7 @@ else
             );
 
             $table->addRowByArray($columnValues, 'userid_'.$user['usr_id']);
-        }//End While
+        }// End While
 
         $page->addHtml($table->show(false));
         $page->show();
