@@ -1267,7 +1267,6 @@ function SollIstProfilfeld($arr, $field)
  */
 function SollIstKategorie($arr, $field)
 {
-    global $gL10n;
     $columnValues = array();
 
     if ($arr['SOLL']['TBL_CATEGORIES'][$field]['cat_name_intern'] != $arr['IST']['TBL_CATEGORIES'][$field]['cat_name_intern'])
