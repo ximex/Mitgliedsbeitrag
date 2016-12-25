@@ -415,7 +415,7 @@ class ConfigTablePMB
      */
     public function delete_member_data($deinst_org_select, $dataField, $dataDesc = '')
     {
-        global $gDb, $gCurrentOrganization,$gL10n,$gProfileFields;
+        global $gDb, $gCurrentOrganization,$gL10n;
 
         $result = '';
         $usfIDs = array();
